@@ -1,0 +1,226 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bbd.economy.sso</groupId>
+    <artifactId>economy-client</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.2-SNAPSHOT</version>
+
+    <name>economy-sso-client</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <encoding>UTF-8</encoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <servlet_version>3.0.1</servlet_version>
+        <junit_version>3.8.1</junit_version>
+        <commons_lang_version>2.6</commons_lang_version>
+        <jboss_version>3.0.7.Final</jboss_version>
+        <bbd_commons_lang_version>1.0.0</bbd_commons_lang_version>
+        <log4j_version>1.2.16</log4j_version>
+        <slf4j_version>1.6.2</slf4j_version>
+        <spring_version>3.2.9.RELEASE</spring_version>
+        <aspectj_version>1.5.3</aspectj_version>
+        <json_version>2.4</json_version>
+        <bdsso_facade_version>1.0-SNAPSHOT</bdsso_facade_version>
+        <spring_version>3.2.9.RELEASE</spring_version>
+        <okhttp_version>3.8.0</okhttp_version>
+        <httpclient_version>4.5.2</httpclient_version>
+
+        <maven_compiler_version>3.6.0</maven_compiler_version>
+        <maven_resources_version>2.7</maven_resources_version>
+        <maven_source_version>3.0.1</maven_source_version>
+        <maven_eclipse_version>2.10</maven_eclipse_version>
+        <maven_surefire_version>2.19.1</maven_surefire_version>
+        <maven_deploy_version>2.7</maven_deploy_version>
+
+        <!-- maven私服配置,用于本地jar包上传到nexus私服 2018-07-10 Add by tianyuliang -->
+        <repo-id>local-nexus</repo-id>
+        <repo-name>bbd snapshot repository</repo-name>
+        <!-- Snapshots仓库 默认已经加入到了bbd public仓库中
+         仓库地址 http://nexus.bbdops.com/nexus/content/groups/public -->
+        <repo-url>http://nexus.bbdops.com/nexus/content/repositories/snapshots/</repo-url>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>${repo-id}</id>
+            <name>${repo-name}</name>
+            <url>${repo-url}</url>
+        </repository>
+    </distributionManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit_version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+            <version>${servlet_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons_lang_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>${jboss_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>${jboss_version}</version>
+        </dependency>
+
+        <!-- bbd-commons-lang -->
+        <dependency>
+            <groupId>com.bbd.commons</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${bbd_commons_lang_version}</version>
+        </dependency>
+
+        <!-- log start -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j_version}</version>
+        </dependency>
+        <!-- log end -->
+
+        <!-- aspectj start -->
+        <dependency>
+            <groupId>aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj_version}</version>
+        </dependency>
+        <!-- aspectj end -->
+
+        <!-- json -->
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>${json_version}</version>
+            <classifier>jdk15</classifier>
+        </dependency>
+
+        <!-- bdsso-server -->
+        <dependency>
+            <groupId>com.bbd.reddata-sso</groupId>
+            <artifactId>bdsso-common-service-facade</artifactId>
+            <version>${bdsso_facade_version}</version>
+        </dependency>
+
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient_version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
+
+    <!-- project build -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven_compiler_version}</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven_resources_version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven_source_version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>${maven_eclipse_version}</version>
+                <configuration>
+                    <downloadSources>true</downloadSources>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven_surefire_version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven_deploy_version}</version>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
